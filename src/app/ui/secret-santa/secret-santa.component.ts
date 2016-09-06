@@ -11,5 +11,4 @@ export class SecretSanta implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-
 }
