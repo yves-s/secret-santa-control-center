@@ -12,4 +12,8 @@ export class ControlCenter implements OnInit {
   ngOnInit() {
   }
 
+  onCreateSecretSanta(secretSanta) {
+    console.log('onCreateSecretSanta', secretSanta);
+  }
+
 }
