@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
-export interface SecretSanta {
-  name: string,
-  email: string
-}
+import {Component, OnInit, Input} from '@angular/core';
+import {SecretSanta} from "../../interfaces";
 
 @Component({
   selector: 'secret-santas',
@@ -11,23 +7,9 @@ export interface SecretSanta {
   styleUrls: ['secret-santas.component.css']
 })
 export class SecretSantas implements OnInit {
-  private secretSantas: Array<SecretSanta> = [
-    {
-      name: 'Mum',
-      email: 'mum@mum.de'
-    },
-    {
-      name: 'Yves',
-      email: 'yves@yves.de'
-    },
-    {
-      name: 'Marejke',
-      email: 'marejke@marejke.de'
-    }
-  ];
+  @Input() secretSantas: Array<SecretSanta> = [];
 
   constructor() { }
 
   ngOnInit() {}
-
 }

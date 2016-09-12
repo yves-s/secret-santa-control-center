@@ -11,5 +11,7 @@
 <secret-santa-creator
   (createSecretSanta)="onCreateSecretSanta($event)"
 ></secret-santa-creator>
-<secret-santas></secret-santas>
+<secret-santas
+  [secretSantas]="secretSantas"
+></secret-santas>
 
