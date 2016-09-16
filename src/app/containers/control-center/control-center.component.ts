@@ -17,5 +17,4 @@ export class ControlCenter implements OnInit {
   onCreateSecretSanta(secretSanta: SecretSanta) {
     this.secretSantas.push(secretSanta);
   }
-
 }

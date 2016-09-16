@@ -4,8 +4,8 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
 import {MdInput} from '@angular2-material/input';
-import {MdToolbar} from '@angular2-material/toolbar';
-import {MdCard} from "@angular2-material/card";
+import {MdToolbar, MdToolbarRow} from '@angular2-material/toolbar';
+import {MdCard, MdCardTitle, MdCardSubtitle, MdCardHeader, MdCardActions} from "@angular2-material/card";
 import {MdButton} from "@angular2-material/button";
 
 import {AppComponent} from './app.component';
@@ -25,6 +25,11 @@ const UiComponents = [...mapValuesToArray(ui)];
     MdInput,
     MdToolbar,
     MdCard,
+    MdCardTitle,
+    MdCardSubtitle,
+    MdCardHeader,
+    MdCardActions,
+    MdToolbarRow,
     MdButton
   ],
   imports: [
