@@ -1,8 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
+import {SecretSanta} from "../interfaces/secret-santa.interface";
+import {StoreHelper} from "./store-helper.service";
 
 @Injectable()
 export class SecretSantaService {
-  constructor() { }
+  constructor(
+    private storeHelper: StoreHelper,
+  ) { }
 
   createSecretSanta(secretSanta) {
     /*
@@ -10,5 +14,16 @@ export class SecretSantaService {
     *   With that we can save the users secret-santas
     *   in case of page-reload
     * */
+    return this.storeHelper.add('secretSantas', secretSanta);
+  }
+
+  getSecretSantas() {
+    /*
+    *   ToDo: Add local fetching
+    * */
+  }
+
+  deleteSecretSanta(secretSanta: SecretSanta) {
+    return this.storeHelper.findAndDelete('secretSantas', secretSanta.id);
   }
 }
