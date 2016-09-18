@@ -27,7 +27,6 @@
     "@angular2-material/input": "^2.0.0-alpha.8-2",
     "@angular2-material/toolbar": "^2.0.0-alpha.8-2",
     "@angular2-material/tooltip": "^2.0.0-alpha.8-2",
-    "angular-2-local-storage": "0.0.18",
     "core-js": "^2.4.0",
     "flexboxgrid": "^6.3.1",
     "normalize.css": "^4.2.0",
