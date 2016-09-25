@@ -19,17 +19,31 @@ export class StoreHelper {
   findAndUpdate(prop, state) {
     const currentState = this.store.getState();
     const collection = currentState[prop];
-    this.store.setState(Object.assign({}, currentState, {[prop]: collection.map(item => {
-      if (item.id !== state.id) {
-        return item;
-      }
-      return Object.assign({}, item, state)
-    })}))
+    this.store.setState(
+      Object.assign(
+        {},
+        currentState,
+        {
+          [prop]: collection.map(item => {
+            if (item.id !== state.id) {
+              return item;
+            }
+            return Object.assign({}, item, state)}
+          )
+        }
+      )
+    )
   }
 
-  findAndDelete(prop, id) {
+  findAndDelete(prop, state) {
     const currentState = this.store.getState();
     const collection = currentState[prop];
-    this.store.setState(Object.assign({}, currentState, {[prop]: collection.filter(item => item.id !== id)}));
+    this.store.setState(
+      Object.assign(
+        {},
+        currentState,
+        {[prop]: collection.filter(item => JSON.stringify(item) !== JSON.stringify(state))}
+      )
+    );
   }
 }

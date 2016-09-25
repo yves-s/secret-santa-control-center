@@ -13,5 +13,6 @@
 ></secret-santa-creator>
 <secret-santas
   [secretSantas]="secretSantas"
+  (removeSecretSanta)="onRemoveSecretSanta($event, i)"
 ></secret-santas>
 

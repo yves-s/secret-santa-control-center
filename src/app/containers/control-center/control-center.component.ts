@@ -17,15 +17,20 @@ export class ControlCenter implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.secretSantas = this.secretSantaService.getSecretSantas();
-    this.store.changes.pluck('secretSantas').
-      subscribe((secretSantas: any) => {
-        console.log('ngOnInit', secretSantas);
+    this.store.changes.pluck('secretSantas')
+      .subscribe((secretSantas: any) => {
+        console.log('changes', secretSantas);
+        this.secretSantas = secretSantas
       });
+    this.secretSantas = this.secretSantaService.getSecretSantas();
   }
 
   onCreateSecretSanta(secretSanta: SecretSanta) {
-    this.secretSantas = this.secretSantaService.createSecretSanta(secretSanta);
-    console.log('onCreateSecretSanta', this.secretSantas);
+    this.secretSantaService.createSecretSanta(secretSanta);
+  }
+
+  onRemoveSecretSanta(secretSanta: SecretSanta) {
+    console.log('ControlCenter::onRemoveSecretSanta', secretSanta);
+    this.secretSantaService.deleteSecretSanta(secretSanta);
   }
 }

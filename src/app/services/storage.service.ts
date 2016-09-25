@@ -37,4 +37,9 @@ export class StorageService {
   public remove(key:string): any {
     this.localStorage.removeItem(key);
   }
+
+  findAndDelete(key:string, value:any) {
+    const currentState = this.getObject(key);
+    this.setObject(key, currentState.filter(item => JSON.stringify(item) !== JSON.stringify(value)));
+  }
 }

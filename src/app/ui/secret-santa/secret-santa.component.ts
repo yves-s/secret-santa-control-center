@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'secret-santa',
@@ -7,8 +7,13 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class SecretSanta implements OnInit {
   @Input() secretSanta = {};
+  @Output() remove = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {}
+
+  onRemove() {
+    this.remove.emit(this.secretSanta);
+  }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {SecretSanta} from "../../interfaces";
 
 @Component({
@@ -8,8 +8,13 @@ import {SecretSanta} from "../../interfaces";
 })
 export class SecretSantas implements OnInit {
   @Input() secretSantas: Array<SecretSanta> = [];
+  @Output() removeSecretSanta = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {}
+
+  onRemoveSecretSanta(secretSanta: SecretSanta) {
+    this.removeSecretSanta.emit(secretSanta);
+  }
 }

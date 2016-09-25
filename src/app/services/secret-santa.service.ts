@@ -30,7 +30,7 @@ export class SecretSantaService {
   }
 
   deleteSecretSanta(secretSanta: SecretSanta) {
-    this.storageService.setObject('secretSantas', secretSanta);
-    this.storeHelper.findAndDelete('secretSantas', secretSanta.id);
+    this.storageService.findAndDelete('secretSantas', secretSanta);
+    this.storeHelper.findAndDelete('secretSantas', secretSanta);
   }
 }
