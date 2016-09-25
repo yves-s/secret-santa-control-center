@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
+import {SecretSanta} from "../interfaces";
 
 @Injectable()
 export class StorageService {
@@ -12,38 +12,26 @@ export class StorageService {
     this.localStorage = localStorage;
   }
 
-  public update(key:string, value:any) {
+  public update(key:string, value:any): SecretSanta[] {
     const currentState = this.getObject(key);
-    this.setObject(key, Object.assign({}, currentState, value));
+    return this.setObject(key, [value, ...currentState]);
   }
 
   public set(key:string, value:string) {
     this.localStorage[key] = value;
   }
 
-/*  public get(key:string):Observable<any> {
-    return this.localStorage[key].asObservable;
-  }*/
-
   public get(key:string): any {
     return this.localStorage[key];
   }
 
-/*  public setObject(key:string, value:any): Observable<any> {
+  public setObject(key:string, value:any): SecretSanta[] {
     this.localStorage[key] = JSON.stringify(value);
-    return this.localStorage[key].asObservable()
-  }*/
-
-  public setObject(key:string, value:any) {
-    this.localStorage[key] = JSON.stringify(value);
+    return this.getObject(key);
   }
 
-/*  public getObject(key:string): Observable<any> {
-    return JSON.parse(this.localStorage[key] || '{}').asObservable;
-  }*/
-
   public getObject(key:string): any {
-    return JSON.parse(this.localStorage[key] || '{}');
+    return JSON.parse(this.localStorage[key] || '[]');
   }
 
   public remove(key:string): any {

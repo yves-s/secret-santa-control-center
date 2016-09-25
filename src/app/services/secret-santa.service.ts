@@ -16,22 +16,21 @@ export class SecretSantaService {
     *   With that we can save the users secret-santas
     *   in case of page-reload
     * */
-    // return this.storageService.setObject('secretSanta', secretSanta)
-    //   .do((savedSecretSanta) => this.storeHelper.add('secretSantas', secretSanta));
-    this.storageService.update('secretSanta', secretSanta);
-    this.storeHelper.add('secretSantas', secretSanta)
+    this.storeHelper.add('secretSantas', secretSanta);
+    return this.storageService.update('secretSantas', secretSanta);
   }
 
   getSecretSantas() {
     /*
     *   ToDo: Add local fetching
     * */
-    this.storageService.getObject('secretSanta')
-      .do((secretSantas) => this.storeHelper.update('secretSantas', secretSantas));
+    let secretSantas = this.storageService.getObject('secretSantas');
+    this.storeHelper.update('secretSantas', secretSantas);
+    return secretSantas;
   }
 
   deleteSecretSanta(secretSanta: SecretSanta) {
-    this.storageService.setObject('secretSanta', secretSanta);
+    this.storageService.setObject('secretSantas', secretSanta);
     this.storeHelper.findAndDelete('secretSantas', secretSanta.id);
   }
 }

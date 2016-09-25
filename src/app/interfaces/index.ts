@@ -1,4 +1,4 @@
 /**
  * Created by yves.schleich on 12/09/16.
  */
-export {SecretSanta} from './secret-santa.interface';
+export {SecretSanta, SecretSantas} from './secret-santa.interface';

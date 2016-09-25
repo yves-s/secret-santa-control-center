@@ -6,3 +6,7 @@ export interface SecretSanta {
   name: string,
   email: string
 }
+
+export interface SecretSantas {
+  secretSantas: SecretSanta[]
+}

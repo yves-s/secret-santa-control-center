@@ -21,7 +21,6 @@ export class Store {
     .do(() => console.log('changes'));
 
   setState(state: State) {
-    console.log('setState', state);
     this._store.next(state);
   }
 
