@@ -19,7 +19,6 @@ export class ControlCenter implements OnInit {
   ngOnInit() {
     this.store.changes.pluck('secretSantas')
       .subscribe((secretSantas: any) => {
-        console.log('changes', secretSantas);
         this.secretSantas = secretSantas
       });
     this.secretSantas = this.secretSantaService.getSecretSantas();
@@ -30,7 +29,10 @@ export class ControlCenter implements OnInit {
   }
 
   onRemoveSecretSanta(secretSanta: SecretSanta) {
-    console.log('ControlCenter::onRemoveSecretSanta', secretSanta);
     this.secretSantaService.deleteSecretSanta(secretSanta);
+  }
+
+  onEditSecretSanta(secretSanta: SecretSanta) {
+    this.secretSantaService.updateSecretSanta(secretSanta);
   }
 }

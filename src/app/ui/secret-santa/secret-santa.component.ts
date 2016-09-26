@@ -8,6 +8,10 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 export class SecretSanta implements OnInit {
   @Input() secretSanta = {};
   @Output() remove = new EventEmitter();
+  @Output() edit = new EventEmitter();
+
+  public editing: boolean = false;
+  public editButtonDesc: string = 'Edit';
 
   constructor() { }
 
@@ -15,5 +19,15 @@ export class SecretSanta implements OnInit {
 
   onRemove() {
     this.remove.emit(this.secretSanta);
+  }
+
+  onEdit() {
+    this.editButtonDesc = !this.editing ? 'Done' : 'Edit';
+
+    if(this.editing) {
+      this.edit.emit(this.secretSanta);
+    }
+
+    this.editing = !this.editing;
   }
 }

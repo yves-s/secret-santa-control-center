@@ -38,8 +38,22 @@ export class StorageService {
     this.localStorage.removeItem(key);
   }
 
-  findAndDelete(key:string, value:any) {
+  public findAndUpdate(key:string, value:any) {
     const currentState = this.getObject(key);
-    this.setObject(key, currentState.filter(item => JSON.stringify(item) !== JSON.stringify(value)));
+    this.setObject(
+      key,
+      currentState
+        .map(item => {
+          if (item.id !== value.id) {
+            return item;
+          }
+          return Object.assign({}, item, value);
+        })
+    )
+  }
+
+  public findAndDelete(key:string, value:any) {
+    const currentState = this.getObject(key);
+    this.setObject(key, currentState.filter(item => item.id !== value.id));
   }
 }

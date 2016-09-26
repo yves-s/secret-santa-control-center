@@ -23,12 +23,13 @@ export class StoreHelper {
       Object.assign(
         {},
         currentState,
-        {
-          [prop]: collection.map(item => {
-            if (item.id !== state.id) {
-              return item;
+        {[prop]: collection
+            .map(item => {
+              if (item.id !== state.id) {
+                return item;
+              }
+              return Object.assign({}, item, state);
             }
-            return Object.assign({}, item, state)}
           )
         }
       )
@@ -42,7 +43,7 @@ export class StoreHelper {
       Object.assign(
         {},
         currentState,
-        {[prop]: collection.filter(item => JSON.stringify(item) !== JSON.stringify(state))}
+        {[prop]: collection.filter(item => item.id !== state.id)}
       )
     );
   }
