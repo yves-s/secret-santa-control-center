@@ -1,0 +1,19 @@
+<md-toolbar color="primary">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs">
+        <span>Secret Santa Control Center</span>
+      </div>
+    </div>
+  </div>
+</md-toolbar>
+<sender></sender>
+<secret-santa-creator
+  (createSecretSanta)="onCreateSecretSanta($event)"
+></secret-santa-creator>
+<secret-santas
+  [secretSantas]="secretSantas"
+  (removeSecretSanta)="onRemoveSecretSanta($event, i)"
+  (editSecretSanta)="onEditSecretSanta($event, i)"
+></secret-santas>
+

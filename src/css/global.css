@@ -1,0 +1,10 @@
+/*
+    Base
+*/
+.full-width {
+  width: 100%;
+}
+
+.row {
+ padding: 0 .5rem;
+}
