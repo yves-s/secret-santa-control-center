@@ -8,18 +8,8 @@ import {SecretSanta} from "../../interfaces";
 })
 export class SecretSantas implements OnInit {
   @Input() secretSantas: Array<SecretSanta> = [];
-  @Output() removeSecretSanta = new EventEmitter();
-  @Output() editSecretSanta = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {}
-
-  onRemoveSecretSanta(secretSanta: SecretSanta) {
-    this.removeSecretSanta.emit(secretSanta);
-  }
-
-  onEditSecretSanta(secretSanta: SecretSanta) {
-    this.editSecretSanta.emit(secretSanta);
-  }
 }

@@ -27,12 +27,4 @@ export class ControlCenter implements OnInit {
   onCreateSecretSanta(secretSanta: SecretSanta) {
     this.secretSantaService.createSecretSanta(secretSanta);
   }
-
-  onRemoveSecretSanta(secretSanta: SecretSanta) {
-    this.secretSantaService.deleteSecretSanta(secretSanta);
-  }
-
-  onEditSecretSanta(secretSanta: SecretSanta) {
-    this.secretSantaService.updateSecretSanta(secretSanta);
-  }
 }

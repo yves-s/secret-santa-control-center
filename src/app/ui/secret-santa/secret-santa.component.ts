@@ -1,4 +1,5 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {SecretSantaService} from "../../services";
 
 @Component({
   selector: 'secret-santa',
@@ -6,26 +7,26 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['secret-santa.component.css']
 })
 export class SecretSanta implements OnInit {
-  @Input() secretSanta = {};
-  @Output() remove = new EventEmitter();
-  @Output() edit = new EventEmitter();
+  @Input() secretSanta;
 
   public editing: boolean = false;
-  public editButtonDesc: string = 'Edit';
+  public editButtonName: string = 'Edit';
 
-  constructor() { }
+  constructor(
+    private secretSantaService: SecretSantaService
+  ) { }
 
   ngOnInit() {}
 
   onRemove() {
-    this.remove.emit(this.secretSanta);
+    this.secretSantaService.deleteSecretSanta(this.secretSanta);
   }
 
   onEdit() {
-    this.editButtonDesc = !this.editing ? 'Done' : 'Edit';
+    this.editButtonName = !this.editing ? 'Done' : 'Edit';
 
     if(this.editing) {
-      this.edit.emit(this.secretSanta);
+      this.secretSantaService.updateSecretSanta(this.secretSanta);
     }
 
     this.editing = !this.editing;
